@@ -8,4 +8,9 @@
         android:id="@+id/loginFragment"
         android:name="com.example.zadanie.LoginFragment"
         android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/itemsFragment"
+        android:name="com.example.zadanie.ItemsFragment"
+        android:label="ItemsFragment" />
+    <action android:id="@+id/action_global_itemsFragment" app:destination="@id/itemsFragment" />
 </navigation>
