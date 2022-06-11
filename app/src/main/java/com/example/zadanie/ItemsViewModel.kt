@@ -3,6 +3,7 @@ package com.example.zadanie
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import org.json.JSONObject
 
 class ItemsViewModel : ViewModel() {
 
@@ -20,10 +21,10 @@ class ItemsViewModel : ViewModel() {
         )
         if (response.isSuccessful) {
             token.postValue(response.body())
-            println("token: ${response.body()!!.access_token}")
             loginSuccess = true
         } else {
-            errorMsg.postValue(response.errorBody()!!.string())
+            val errorString= JSONObject(response.errorBody()!!.string()).getString("error_description")
+            errorMsg.postValue(errorString.toString())
             Log.e("Error: ", "Login failed.")
         }
     }
