@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.zadanie.databinding.FragmentLoginBinding
@@ -23,6 +24,13 @@ class LoginFragment : Fragment(R.layout.fragment_login){
 
         binding = FragmentLoginBinding.bind(view)
 
+        val errorObserver = Observer<String> {
+            Toast.makeText(context, itemsViewModel.errorMsg.value.toString(), Toast.LENGTH_SHORT)
+                .show()
+        }
+
+        itemsViewModel.errorMsg.observe(viewLifecycleOwner, errorObserver)
+
         binding.apply {
             loginButton.setOnClickListener {
                 if (passwordInput.text.isEmpty() || usernameInput.text.isEmpty()) {
@@ -35,9 +43,12 @@ class LoginFragment : Fragment(R.layout.fragment_login){
                         passwordInput.text.toString(),
                         usernameInput.text.toString()
                     )
-                    withContext(Main) {
-                        val action = NavGraphDirections.actionGlobalItemsFragment()
-                        findNavController().navigate(action)
+                    if (itemsViewModel.loginSuccess) {
+                        withContext(Main) {
+                            val action = NavGraphDirections.actionGlobalItemsFragment()
+                            findNavController().navigate(action)
+                        }
+                        itemsViewModel.loginSuccess = false
                     }
                 }
             }

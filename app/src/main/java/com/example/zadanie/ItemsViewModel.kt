@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 class ItemsViewModel : ViewModel() {
 
     val token = MutableLiveData<Login>()
+    var errorMsg = MutableLiveData<String>()
+    var loginSuccess = false
 
     suspend fun login(password: String, login: String) {
         val response = ItemsRepository(RetrofitInstance.api).login(
@@ -18,9 +20,10 @@ class ItemsViewModel : ViewModel() {
         )
         if (response.isSuccessful) {
             token.postValue(response.body())
-            println("\nlogin ended")
+            println("token: ${response.body()!!.access_token}")
+            loginSuccess = true
         } else {
-            println(response.errorBody()?.string())
+            errorMsg.postValue(response.errorBody()!!.string())
             Log.e("Error: ", "Login failed.")
         }
     }
