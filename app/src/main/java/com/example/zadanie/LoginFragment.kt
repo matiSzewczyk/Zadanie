@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 
 class LoginFragment : Fragment(R.layout.fragment_login){
 
-    private val itemsViewModel: ItemsViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
 
     private lateinit var binding: FragmentLoginBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,11 +25,11 @@ class LoginFragment : Fragment(R.layout.fragment_login){
         binding = FragmentLoginBinding.bind(view)
 
         val errorObserver = Observer<String> {
-            Toast.makeText(context, itemsViewModel.errorMsg.value.toString(), Toast.LENGTH_SHORT)
+            Toast.makeText(context, loginViewModel.errorMsg.value.toString(), Toast.LENGTH_SHORT)
                 .show()
         }
 
-        itemsViewModel.errorMsg.observe(viewLifecycleOwner, errorObserver)
+        loginViewModel.errorMsg.observe(viewLifecycleOwner, errorObserver)
 
         binding.apply {
             loginButton.setOnClickListener {
@@ -39,16 +39,16 @@ class LoginFragment : Fragment(R.layout.fragment_login){
                     return@setOnClickListener
                 }
                 lifecycleScope.launch(IO) {
-                    itemsViewModel.login(
+                    loginViewModel.login(
                         passwordInput.text.toString(),
                         usernameInput.text.toString()
                     )
-                    if (itemsViewModel.loginSuccess) {
+                    if (loginViewModel.loginSuccess) {
                         withContext(Main) {
                             val action = NavGraphDirections.actionGlobalItemsFragment()
                             findNavController().navigate(action)
                         }
-                        itemsViewModel.loginSuccess = false
+                        loginViewModel.loginSuccess = false
                     }
                 }
             }

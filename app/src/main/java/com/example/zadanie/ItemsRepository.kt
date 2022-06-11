@@ -17,4 +17,6 @@ class ItemsRepository(
         client_secret,
         client_id,
         username)
+
+    suspend fun getItems(token: String) = itemsApi.getItems(token)
 }

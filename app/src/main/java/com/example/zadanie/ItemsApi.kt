@@ -5,6 +5,7 @@ import retrofit2.http.*
 
 interface ItemsApi {
 
+    // Get the token
     @POST("oauth/token")
     @FormUrlEncoded
     suspend fun login(
@@ -14,4 +15,10 @@ interface ItemsApi {
         @Field("client_id") client_id: String,
         @Field("username") username: String,
     ) : Response<Login>
+
+    // Get the list of items
+    @GET("api/v3/27/items")
+    suspend fun getItems(
+        @Header("Authorization") token: String
+    ) : Response<Item>
 }
