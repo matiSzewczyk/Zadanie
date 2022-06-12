@@ -29,6 +29,7 @@ class ItemsFragment : Fragment(R.layout.fragment_items), CustomClickInterface {
             val itemsObserver = Observer<Item> {
                 itemsAdapter.setListData(itemsViewModel.itemList.value!!)
                 itemsAdapter.notifyDataSetChanged()
+                itemsViewModel.sendToBox()
             }
             itemsViewModel.itemList.observe(viewLifecycleOwner, itemsObserver)
         }
