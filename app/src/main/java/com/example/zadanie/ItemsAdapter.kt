@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 class ItemsAdapter(
     private val customClickInterface: CustomClickInterface
 ) : RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
-    private var items = Item(null)
+    private var items  = Item(null)
 
     inner class ItemsViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
@@ -35,6 +35,7 @@ class ItemsAdapter(
             itemPrice.text = items.data?.get(position)?.price?.amount.toString()
             itemCurrency.text = items.data?.get(position)?.price?.currency.toString()
             Picasso.get().load(items.data?.get(position)?.image_link?.small).into(itemImage)
+            itemTax.text = items.data?.get(position)?.tax?.name.toString()
         }
     }
 

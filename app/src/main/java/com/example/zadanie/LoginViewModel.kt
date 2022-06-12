@@ -13,11 +13,11 @@ class LoginViewModel : ViewModel() {
 
     suspend fun login(password: String, login: String) {
         val response = ItemsRepository(RetrofitInstance.api).login(
-            password,
+            "zadanie",
             "password",
             "dc6d8a5e-861b-4df8-bb6b-9889c106161d",
             "073481d0-549e-4eac-9174-27cd2432f149",
-            login
+            "zadanie@zadanie.com"
         )
         if (response.isSuccessful) {
             token.postValue(response.body())

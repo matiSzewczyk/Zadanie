@@ -23,15 +23,14 @@ class ItemsFragment : Fragment(R.layout.fragment_items), CustomClickInterface {
 
         binding = FragmentItemsBinding.bind(view)
 
-        val itemsObserver = Observer<Item> {
-            itemsAdapter.setListData(itemsViewModel.itemList.value!!)
-            itemsAdapter.notifyDataSetChanged()
-        }
-        itemsViewModel.itemList.observe(viewLifecycleOwner, itemsObserver)
-
         lifecycleScope.launch(Main) {
             itemsViewModel.getItemList()
             setupRecyclerView()
+            val itemsObserver = Observer<Item> {
+                itemsAdapter.setListData(itemsViewModel.itemList.value!!)
+                itemsAdapter.notifyDataSetChanged()
+            }
+            itemsViewModel.itemList.observe(viewLifecycleOwner, itemsObserver)
         }
     }
 

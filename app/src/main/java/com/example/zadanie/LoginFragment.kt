@@ -33,11 +33,11 @@ class LoginFragment : Fragment(R.layout.fragment_login){
 
         binding.apply {
             loginButton.setOnClickListener {
-                if (passwordInput.text.isEmpty() || usernameInput.text.isEmpty()) {
-                    Toast.makeText(context, "Some fields are empty.", Toast.LENGTH_SHORT)
-                        .show()
-                    return@setOnClickListener
-                }
+//                if (passwordInput.text.isEmpty() || usernameInput.text.isEmpty()) {
+//                    Toast.makeText(context, "Some fields are empty.", Toast.LENGTH_SHORT)
+//                        .show()
+//                    return@setOnClickListener
+//                }
                 lifecycleScope.launch(IO) {
                     loginViewModel.login(
                         passwordInput.text.toString(),
