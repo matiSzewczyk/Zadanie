@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 class ItemsAdapter(
     private val customClickInterface: CustomClickInterface
 ) : RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
-    var items = Item(null)
+    private var items = Item(null)
 
     inner class ItemsViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
