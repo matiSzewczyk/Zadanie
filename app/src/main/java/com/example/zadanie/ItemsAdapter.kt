@@ -5,10 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zadanie.databinding.ListItemBinding
 
-class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
+class ItemsAdapter(
+    private val customClickInterface: CustomClickInterface
+) : RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
     var items = Item(null)
 
-    inner class ItemsViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ItemsViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            apply {
+                itemView.setOnClickListener {
+                    customClickInterface.onClickListener(adapterPosition, itemView)
+                }
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsViewHolder {
         return ItemsViewHolder(
@@ -21,6 +31,8 @@ class ItemsAdapter : RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
     override fun onBindViewHolder(holder: ItemsViewHolder, position: Int) {
         holder.binding.apply {
             itemName.text = items.data?.get(position)?.name
+            itemPrice.text = items.data?.get(position)?.price?.amount.toString()
+            itemCurrency.text = items.data?.get(position)?.price?.currency.toString()
         }
     }
 

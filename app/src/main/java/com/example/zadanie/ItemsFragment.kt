@@ -2,6 +2,7 @@ package com.example.zadanie
 
 import android.os.Bundle
 import android.view.View
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -12,7 +13,7 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
-class ItemsFragment : Fragment(R.layout.fragment_items){
+class ItemsFragment : Fragment(R.layout.fragment_items), CustomClickInterface {
 
     private lateinit var binding: FragmentItemsBinding
     private lateinit var itemsAdapter: ItemsAdapter
@@ -36,12 +37,13 @@ class ItemsFragment : Fragment(R.layout.fragment_items){
     }
 
     private fun setupRecyclerView() = binding.itemsRecyclerView.apply {
-        itemsAdapter = ItemsAdapter()
+        itemsAdapter = ItemsAdapter(this@ItemsFragment)
         adapter = itemsAdapter
         layoutManager = LinearLayoutManager(context)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onClickListener(position: Int, view: View) {
+        val hiddenLayout = view.findViewById<ConstraintLayout>(R.id.hidden_layout)
+        hiddenLayout.visibility = if (hiddenLayout.visibility == View.GONE) View.VISIBLE else View.GONE
     }
 }
