@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zadanie.databinding.ListItemBinding
+import com.squareup.picasso.Picasso
 
 class ItemsAdapter(
     private val customClickInterface: CustomClickInterface
@@ -33,6 +34,7 @@ class ItemsAdapter(
             itemName.text = items.data?.get(position)?.name
             itemPrice.text = items.data?.get(position)?.price?.amount.toString()
             itemCurrency.text = items.data?.get(position)?.price?.currency.toString()
+            Picasso.get().load(items.data?.get(position)?.image_link?.small).into(itemImage)
         }
     }
 
