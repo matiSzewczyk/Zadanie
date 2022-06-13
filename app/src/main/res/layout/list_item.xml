@@ -1,82 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="2dp"
+    android:animateLayoutChanges="true"
     android:layout_margin="5dp"
-    android:padding="5dp"
     android:background="@drawable/list_item_background"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:elevation="2dp"
+    android:padding="5dp">
 
     <ImageView
         android:id="@+id/item_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
         android:id="@+id/item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:layout_margin="10dp"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_margin="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Ciasto czekoladowe" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/hidden_layout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/item_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/item_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_name">
 
         <TextView
             android:id="@+id/item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:textColor="@color/dark_gray"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="200"/>
+            tools:text="200" />
 
         <TextView
             android:id="@+id/item_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/dark_gray"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/item_price"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="PLN"/>
+            tools:text="PLN" />
 
         <TextView
             android:id="@+id/item_tax_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/item_currency"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="20dp"
+            android:text="@string/vat"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="PLN"/>
+            app:layout_constraintStart_toEndOf="@id/item_currency"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="26%" />
 
         <TextView
             android:id="@+id/item_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/item_tax_rate"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="PLN"/>
+            app:layout_constraintStart_toStartOf="@id/item_price"
+            app:layout_constraintTop_toBottomOf="@id/item_price"
+            tools:text="Desery" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,4 +3,5 @@
     <string name="zadanie">zadanie</string>
     <string name="zadanie_zadanie_com">zadanie@zadanie.com</string>
     <string name="login">LOGIN</string>
+    <string name="vat">VAT:</string>
 </resources>
