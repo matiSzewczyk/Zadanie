@@ -25,11 +25,11 @@ class ItemsFragment : Fragment(R.layout.fragment_items), CustomClickInterface {
 
         lifecycleScope.launch(Main) {
             itemsViewModel.getItemList()
+            itemsViewModel.getFromBox()
             setupRecyclerView()
-            val itemsObserver = Observer<Item> {
+            val itemsObserver = Observer<MutableList<Items>> {
                 itemsAdapter.setListData(itemsViewModel.itemList.value!!)
                 itemsAdapter.notifyDataSetChanged()
-//                itemsViewModel.sendToBox()
             }
             itemsViewModel.itemList.observe(viewLifecycleOwner, itemsObserver)
         }

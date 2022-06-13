@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 class ItemsAdapter(
     private val customClickInterface: CustomClickInterface
 ) : RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
-    private var items  = Item(null)
+    private var items  = mutableListOf<Items>()
 
     inner class ItemsViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
@@ -31,20 +31,20 @@ class ItemsAdapter(
 
     override fun onBindViewHolder(holder: ItemsViewHolder, position: Int) {
         holder.binding.apply {
-            itemName.text = items.data?.get(position)?.name
-            itemPrice.text = items.data?.get(position)?.price?.amount.toString()
-            itemCurrency.text = " " + items.data?.get(position)?.price?.currency.toString()
-            itemTaxRate.text = "VAT: " + items.data?.get(position)?.tax?.name
-            itemCategory.text = items.data?.get(position)?.category?.name
-            Picasso.get().load(items.data?.get(position)?.image_link?.small).into(itemImage)
+            itemName.text = items[position].name
+            itemPrice.text = items[position].price.toString()
+            itemCurrency.text = " " + items[position].currency
+            itemTaxRate.text = "VAT: " + items[position].tax
+            itemCategory.text = items[position].category
+            Picasso.get().load(items[position].imageLink).into(itemImage)
         }
     }
 
     override fun getItemCount(): Int {
-        return items.data!!.size
+        return items.size
     }
 
-    fun setListData(data: Item) {
+    fun setListData(data: MutableList<Items>) {
         this.items = data
     }
 }

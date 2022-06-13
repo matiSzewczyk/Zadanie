@@ -2,10 +2,11 @@ package com.example.zadanie
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import retrofit2.Response
 
 class ItemsViewModel : ViewModel() {
 
-    var itemList = MutableLiveData<Item>()
+    var itemList = MutableLiveData<MutableList<Items>>()
     private var itemsBox = ObjectBox.store.boxFor(Items::class.java)
 
     suspend fun getItemList() {
@@ -15,22 +16,35 @@ class ItemsViewModel : ViewModel() {
             "category"
         )
         if (response.isSuccessful) {
-            itemList.postValue(response.body()!!)
+            sendToBox(response)
         }
     }
 
-    fun sendToBox() {
-        itemList.value!!.data?.forEach {
+    private fun sendToBox(response: Response<Item>) {
+        response.body()?.data?.forEach {
+
+            val query = itemsBox.query(Items_.name.equal(it.name))
+                .build()
+            val results = query.find()
+            if (results.isNotEmpty())  return
+
             val item = Items(
-                it.id.toLong(),
+                0,
                 it.name,
                 it.price.amount,
                 it.price.currency,
-                it.image_link.small,
+                it.image_link?.default_link,
                 it.tax.name,
                 it.category.name
             )
             itemsBox.put(item)
+        }
+    }
+
+    fun getFromBox() {
+        val items = itemsBox.all
+        if (items.isNotEmpty()) {
+            itemList.postValue(items)
         }
     }
 }
