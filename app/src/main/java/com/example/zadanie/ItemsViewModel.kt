@@ -18,22 +18,19 @@ class ItemsViewModel : ViewModel() {
             itemList.postValue(response.body()!!)
         }
     }
+
     fun sendToBox() {
         itemList.value!!.data?.forEach {
-            val query = itemsBox.query(Items_.id.equal(it.id))
-                .build()
-            val results = query.find()
-            if (results.isNotEmpty()) return
-            else {
-                val item = Items(
-                    it.id.toLong(),
-                    it.name,
-                    it.price.amount,
-                    it.price.currency,
-                    it.image_link.small
-                )
-                itemsBox.put(item)
-            }
+            val item = Items(
+                it.id.toLong(),
+                it.name,
+                it.price.amount,
+                it.price.currency,
+                it.image_link.small,
+                it.tax.name,
+                it.category.name
+            )
+            itemsBox.put(item)
         }
     }
 }

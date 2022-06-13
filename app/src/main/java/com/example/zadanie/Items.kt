@@ -10,5 +10,7 @@ data class Items(
     var name: String? = null,
     var price: Double? = null,
     var currency: String? = null,
-    var imageLink: String? = null
+    var imageLink: String? = null,
+    var tax: String? = null,
+    var category: String? = null
 )
