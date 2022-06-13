@@ -19,6 +19,8 @@ interface ItemsApi {
     // Get the list of items
     @GET("api/v3/27/items")
     suspend fun getItems(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
+        @Query("include") tax: String,
+        @Query("include") category: String
     ) : Response<Item>
 }

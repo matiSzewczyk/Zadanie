@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zadanie.databinding.FragmentItemsBinding
 import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ItemsFragment : Fragment(R.layout.fragment_items), CustomClickInterface {
@@ -24,12 +25,13 @@ class ItemsFragment : Fragment(R.layout.fragment_items), CustomClickInterface {
         binding = FragmentItemsBinding.bind(view)
 
         lifecycleScope.launch(Main) {
+            delay(2000)
             itemsViewModel.getItemList()
             setupRecyclerView()
             val itemsObserver = Observer<Item> {
                 itemsAdapter.setListData(itemsViewModel.itemList.value!!)
                 itemsAdapter.notifyDataSetChanged()
-                itemsViewModel.sendToBox()
+//                itemsViewModel.sendToBox()
             }
             itemsViewModel.itemList.observe(viewLifecycleOwner, itemsObserver)
         }

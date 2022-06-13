@@ -34,6 +34,8 @@ class ItemsAdapter(
             itemName.text = items.data?.get(position)?.name
             itemPrice.text = items.data?.get(position)?.price?.amount.toString()
             itemCurrency.text = items.data?.get(position)?.price?.currency.toString()
+            itemTaxRate.text = items.data?.get(position)?.tax?.name.toString()
+            itemCategory.text = items.data?.get(position)?.category?.name
             Picasso.get().load(items.data?.get(position)?.image_link?.small).into(itemImage)
         }
     }
