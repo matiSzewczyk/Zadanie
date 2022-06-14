@@ -1,8 +1,9 @@
 package com.example.zadanie
 
+import javax.inject.Inject
 import kotlin.math.log
 
-class ItemsRepository(
+class ItemsRepository @Inject constructor(
     private val itemsApi: ItemsApi
 ){
     suspend fun login(

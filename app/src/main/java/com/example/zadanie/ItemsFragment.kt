@@ -1,5 +1,6 @@
 package com.example.zadanie
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -11,12 +12,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.zadanie.databinding.FragmentItemsBinding
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class ItemsFragment : Fragment(R.layout.fragment_items), CustomClickInterface {
 
     private lateinit var binding: FragmentItemsBinding
     private lateinit var itemsAdapter: ItemsAdapter
-    private val itemsViewModel: ItemsViewModel by viewModels()
+    @Inject lateinit var itemsViewModel: ItemsViewModel
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (getContext() as MyApplication).appComponent.inject(this)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

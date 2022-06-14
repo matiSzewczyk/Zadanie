@@ -1,5 +1,6 @@
 package com.example.zadanie
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -13,12 +14,18 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 class LoginFragment : Fragment(R.layout.fragment_login){
 
-    private val loginViewModel: LoginViewModel by viewModels()
+    @Inject lateinit var loginViewModel: LoginViewModel
 
     private lateinit var binding: FragmentLoginBinding
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (context as MyApplication).appComponent.inject(this)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

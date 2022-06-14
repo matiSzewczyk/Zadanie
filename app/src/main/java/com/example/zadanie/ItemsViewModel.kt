@@ -3,14 +3,17 @@ package com.example.zadanie
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import retrofit2.Response
+import javax.inject.Inject
 
-class ItemsViewModel : ViewModel() {
+class ItemsViewModel @Inject constructor(
+    private val repository: ItemsRepository
+) : ViewModel() {
 
     var itemList = MutableLiveData<MutableList<Items>>()
     private var itemsBox = ObjectBox.store.boxFor(Items::class.java)
 
     suspend fun getItemList() {
-        val response = ItemsRepository(RetrofitInstance.api).getItems(
+        val response = repository.getItems(
             "Bearer $TOKEN",
             "tax",
             "category"

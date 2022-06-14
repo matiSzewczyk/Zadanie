@@ -8,7 +8,6 @@ object ObjectBox {
     private set
 
     fun init(context: Context) {
-        println("\nxd")
         store = MyObjectBox.builder()
             .androidContext(context.applicationContext)
             .build()
