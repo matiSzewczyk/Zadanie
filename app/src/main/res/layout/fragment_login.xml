@@ -36,6 +36,7 @@
         android:drawablePadding="15dp"
         android:drawableTint="@color/dark_gray"
         android:hint="@string/zadanie"
+        android:inputType="textPassword"
         android:paddingStart="15dp"
         android:textColor="@color/dark_gray"
         app:layout_constraintEnd_toEndOf="parent"
