@@ -19,11 +19,11 @@ class LoginViewModel @Inject constructor(
 
     suspend fun login(password: String, login: String) {
         val response = repository.login(
-            "zadanie",
+            password,
             "password",
             "dc6d8a5e-861b-4df8-bb6b-9889c106161d",
             "073481d0-549e-4eac-9174-27cd2432f149",
-            "zadanie@zadanie.com"
+            login
         )
         if (response.isSuccessful) {
             preferences.saveToken(Token(response.body()!!.access_token))
