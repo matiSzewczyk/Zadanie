@@ -5,10 +5,9 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules =[
-    NetworkModule::class
+    NetworkModule::class,
+    SubComponentModule::class
 ])
 interface ApplicationComponent {
-    fun inject(mainActivity: MainActivity)
-    fun inject(itemsFragment: ItemsFragment)
-    fun inject(loginFragment: LoginFragment)
+    fun appSubComponent(): AppSubComponent.Factory
 }

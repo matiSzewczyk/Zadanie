@@ -24,7 +24,7 @@ class LoginFragment : Fragment(R.layout.fragment_login){
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (context as MyApplication).appComponent.inject(this)
+        (activity as MainActivity).appSubComponent.inject(this)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

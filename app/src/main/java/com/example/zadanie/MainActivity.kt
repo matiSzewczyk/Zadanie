@@ -5,10 +5,14 @@ import android.os.Bundle
 
 var TOKEN =""
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
+    lateinit var appSubComponent: AppSubComponent
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        (applicationContext as MyApplication).appComponent.inject(this)
+        appSubComponent = (application as MyApplication)
+            .appComponent.appSubComponent().create()
+        appSubComponent.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
     }
 }

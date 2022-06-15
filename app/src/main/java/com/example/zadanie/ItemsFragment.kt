@@ -22,7 +22,7 @@ class ItemsFragment : Fragment(R.layout.fragment_items), CustomClickInterface {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (getContext() as MyApplication).appComponent.inject(this)
+        (activity as MainActivity).appSubComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
