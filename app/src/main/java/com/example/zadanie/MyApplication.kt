@@ -1,10 +1,11 @@
 package com.example.zadanie
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class MyApplication : Application() {
 
-    val appComponent: ApplicationComponent = DaggerApplicationComponent.create()
 
     override fun onCreate() {
         super.onCreate()

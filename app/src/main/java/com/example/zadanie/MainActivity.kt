@@ -2,17 +2,12 @@ package com.example.zadanie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dagger.hilt.android.AndroidEntryPoint
 
-var TOKEN =""
-
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-    lateinit var appSubComponent: AppSubComponent
-
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        appSubComponent = (application as MyApplication)
-            .appComponent.appSubComponent().create()
-        appSubComponent.inject(this)
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
     }
 }

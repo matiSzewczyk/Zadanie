@@ -1,18 +1,18 @@
 package com.example.zadanie
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+class PreferencesModule {
 
     @Singleton
     @Provides
-    fun provideApi(retrofitInstance: RetrofitInstance): ItemsApi {
-        return retrofitInstance.buildApi()
-    }
+    fun provideUserPreferences(@ApplicationContext context: Context) = UserPreferences(context)
 }

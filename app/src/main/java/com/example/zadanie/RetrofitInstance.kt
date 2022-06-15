@@ -4,7 +4,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class RetrofitInstance @Inject constructor() {
 
     private lateinit var api: ItemsApi

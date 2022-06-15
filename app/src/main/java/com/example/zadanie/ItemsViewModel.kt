@@ -1,12 +1,18 @@
 package com.example.zadanie
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import org.json.JSONObject
 import retrofit2.Response
 import javax.inject.Inject
 
+@HiltViewModel
 class ItemsViewModel @Inject constructor(
-    private val repository: ItemsRepository
+    private val repository: ItemsRepository,
+    private val preferences: UserPreferences
 ) : ViewModel() {
 
     var itemList = MutableLiveData<MutableList<Items>>()
@@ -14,12 +20,15 @@ class ItemsViewModel @Inject constructor(
 
     suspend fun getItemList() {
         val response = repository.getItems(
-            "Bearer $TOKEN",
+            "Bearer " + preferences.getToken().toString(),
             "tax",
             "category"
         )
         if (response.isSuccessful) {
             sendToBox(response)
+        } else {
+            val errorString= JSONObject(response.errorBody()!!.string()).getString("error_description")
+            Log.e(TAG, errorString )
         }
     }
 
