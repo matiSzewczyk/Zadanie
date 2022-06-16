@@ -6,11 +6,11 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.zadanie.LoginFragment"
+        android:name="com.example.zadanie.fragments.LoginFragment"
         android:label="LoginFragment" />
     <fragment
         android:id="@+id/itemsFragment"
-        android:name="com.example.zadanie.ItemsFragment"
+        android:name="com.example.zadanie.fragments.ItemsFragment"
         android:label="ItemsFragment" />
     <action android:id="@+id/action_global_itemsFragment" app:destination="@id/itemsFragment" />
 </navigation>

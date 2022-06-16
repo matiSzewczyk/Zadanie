@@ -1,4 +1,4 @@
-package com.example.zadanie
+package com.example.zadanie.models
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id

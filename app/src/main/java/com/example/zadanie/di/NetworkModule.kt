@@ -1,5 +1,7 @@
-package com.example.zadanie
+package com.example.zadanie.di
 
+import com.example.zadanie.interfaces.ItemsApi
+import com.example.zadanie.network.RetrofitInstance
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

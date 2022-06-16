@@ -1,4 +1,4 @@
-package com.example.zadanie
+package com.example.zadanie.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.zadanie.NavGraphDirections
+import com.example.zadanie.viewmodels.LoginViewModel
+import com.example.zadanie.R
 import com.example.zadanie.databinding.FragmentLoginBinding
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main

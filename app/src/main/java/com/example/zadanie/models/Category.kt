@@ -1,4 +1,4 @@
-package com.example.zadanie
+package com.example.zadanie.models
 
 data class Category(
     val color: String,

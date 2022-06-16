@@ -1,6 +1,7 @@
 package com.example.zadanie
 
 import android.content.Context
+import com.example.zadanie.models.MyObjectBox
 import io.objectbox.BoxStore
 
 object ObjectBox {

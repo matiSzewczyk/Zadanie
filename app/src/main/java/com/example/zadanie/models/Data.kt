@@ -1,4 +1,4 @@
-package com.example.zadanie
+package com.example.zadanie.models
 
 data class Data(
     val barcodes: List<String>,

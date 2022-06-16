@@ -1,6 +1,6 @@
-package com.example.zadanie
+package com.example.zadanie.models
 
-data class Translation(
+data class TranslationX(
     val description: String,
     val locale: String,
     val name: String

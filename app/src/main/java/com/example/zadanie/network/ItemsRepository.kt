@@ -1,7 +1,7 @@
-package com.example.zadanie
+package com.example.zadanie.network
 
+import com.example.zadanie.interfaces.ItemsApi
 import javax.inject.Inject
-import kotlin.math.log
 
 class ItemsRepository @Inject constructor(
     private val itemsApi: ItemsApi

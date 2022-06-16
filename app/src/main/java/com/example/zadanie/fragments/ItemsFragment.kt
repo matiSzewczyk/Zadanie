@@ -1,4 +1,4 @@
-package com.example.zadanie
+package com.example.zadanie.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.zadanie.interfaces.CustomClickInterface
+import com.example.zadanie.viewmodels.ItemsViewModel
+import com.example.zadanie.R
+import com.example.zadanie.adapters.ItemsAdapter
 import com.example.zadanie.databinding.FragmentItemsBinding
+import com.example.zadanie.models.Items
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 

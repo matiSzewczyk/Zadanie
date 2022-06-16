@@ -1,6 +1,7 @@
-package com.example.zadanie
+package com.example.zadanie.di
 
 import android.content.Context
+import com.example.zadanie.UserPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,5 +1,6 @@
-package com.example.zadanie
+package com.example.zadanie.network
 
+import com.example.zadanie.interfaces.ItemsApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create

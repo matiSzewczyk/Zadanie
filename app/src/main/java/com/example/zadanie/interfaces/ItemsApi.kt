@@ -1,5 +1,7 @@
-package com.example.zadanie
+package com.example.zadanie.interfaces
 
+import com.example.zadanie.models.Item
+import com.example.zadanie.models.Login
 import retrofit2.Response
 import retrofit2.http.*
 

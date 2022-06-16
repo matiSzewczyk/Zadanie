@@ -1,4 +1,4 @@
-package com.example.zadanie
+package com.example.zadanie.interfaces
 
 import android.view.View
 

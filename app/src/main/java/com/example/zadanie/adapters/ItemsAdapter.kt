@@ -1,9 +1,11 @@
-package com.example.zadanie
+package com.example.zadanie.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.zadanie.interfaces.CustomClickInterface
 import com.example.zadanie.databinding.ListItemBinding
+import com.example.zadanie.models.Items
 import com.squareup.picasso.Picasso
 
 class ItemsAdapter(
